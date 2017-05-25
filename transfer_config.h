@@ -9,6 +9,7 @@ public:
     static TransferConfig* getInstance();
     static QString getServerIP();
     static int getPort();
+    static QString getClientIP();
     static int getMemLength(int memID);
 
     void setValue(const QString& key, const QVariant& value);

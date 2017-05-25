@@ -18,10 +18,16 @@ SOURCES += main.cpp \
     transfer_server.cpp \
     transfer_config.cpp \
     transfer_client.cpp \
-    library_exportfunction.cpp
+    library_exportfunction.cpp \
+    shared_buffer.cpp \
+    rtkcmn.c \
+    rtcm3.c \
+    rtcm.c
 
 HEADERS += \
     transfer_server.h \
     transfer_config.h \
     transfer_client.h \
-    common.h
+    common.h \
+    shared_buffer.h \
+    rtklib.h

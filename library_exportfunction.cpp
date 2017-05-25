@@ -1,5 +1,7 @@
 #include <QThread>
 #include <QDebug>
+#include <QElapsedTimer>
+#include <QCoreApplication>
 
 #include "transfer_client.h"
 #include "transfer_server.h"
@@ -27,6 +29,11 @@ extern "C" bool DllMain(int args, char* argv[])
     if (args > 0 && qstrcmp(argv[0], "Server") == 0) {
         transferThread = new ServerWriter();
         transferThread->start();
+        QElapsedTimer t;
+        t.start();
+        while(t.elapsed() < 3000) {
+            QCoreApplication::processEvents();
+        }
     }
     else if (args > 0 && qstrcmp(argv[0], "Client") == 0) {
         transferThread = new ClientWriter();

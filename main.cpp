@@ -15,6 +15,7 @@ void* find(int memID, int memLength) {
     static QMap<int, void*> map;
     if (!map.contains(memID)) {
         void* pointer = malloc(memLength);
+        qMemSet(pointer, 0, memLength);
         map.insert(memID, pointer);
     }
     return map[memID];

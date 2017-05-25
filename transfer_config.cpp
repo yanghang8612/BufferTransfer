@@ -15,9 +15,14 @@ int TransferConfig::getPort()
     return instance->getIntValue("ServerAddress/port");
 }
 
+QString TransferConfig::getClientIP()
+{
+    return instance->getStringValue("ClientAddress/ip");
+}
+
 int TransferConfig::getMemLength(int memID)
 {
-    if (memID > 6000 && memID < 6601) {
+    if (memID > 6000 && memID < 6801) {
         return 1205;
     }
     return instance->getIntValue("MemLength/" + QString::number(memID));
@@ -60,13 +65,6 @@ TransferConfig* TransferConfig::instance = new TransferConfig();
 TransferConfig::TransferConfig()
 {
     settings = new QSettings("../conf/transfer_config.ini", QSettings::IniFormat);
-    settings->setValue("ServerAddress/ip", "127.0.0.1");
-    settings->setValue("ServerAddress/port", "8000");
-    settings->setValue("MemLength/101", "640004");
-    settings->setValue("MemLength/819", "5993");
-    settings->setValue("MemLength/820", "19");
-    settings->setValue("MemLength/1501", "580004");
-    settings->setValue("MemLength/1601", "85600");
 }
 
 TransferConfig::TransferConfig(const TransferConfig&)
